@@ -12,4 +12,8 @@ app:get('/', function()
   return 'Welcome to Lapis: '..username
 end)
 
+app:get('/test', function()
+	return { json = {logged = true} }
+end)
+
 return app
