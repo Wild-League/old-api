@@ -16,7 +16,6 @@ using lapis, used to implement activityPub and take care of things that are rela
 lapis serve
 ```
 
-
 # Running migrations
 `$ lapis migrate --migrations-module ./db/migrations`
 
