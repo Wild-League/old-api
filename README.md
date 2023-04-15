@@ -1,17 +1,28 @@
 # Wild League Fediverse
 
-## Running migrations
+# Project
+
+## UDP Server
+Used for pass data in game
+
+```bash
+lua udp_server.lua
+```
+
+## HTTP Server
+using lapis, used to implement activityPub and take care of things that are related to the user and server.
+
+```bash
+lapis serve
+```
+
+
+# Running migrations
 `$ lapis migrate --migrations-module ./db/migrations`
 
-## ActivityPub Implementation
+# ActivityPub Implementation
 Implementation based in [w3](https://www.w3.org/TR/activitystreams-vocabulary/).
 
-- [ ] Endpoints
-  - [ ] Posts
-  - [ ] Direct messages
-  - [ ] follow users
-  - [ ] Inbox
-  - [ ] Outbox
 - [ ] Activities
   - [ ] Accept
   - [ ] Reject
