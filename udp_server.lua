@@ -11,6 +11,7 @@ local Server = {
 function Server:init()
 	self.connection = socket.udp()
 	self.connection:setsockname("*", 9091)
+	self.connection:settimeout(0)
 end
 
 function Server:user_exists(ip, port)
