@@ -6,7 +6,8 @@ local Json = require('lib.json')
 local Events = require('udp.events')
 
 local Server = {
-	objects = {}
+	objects = {},
+	the_other_player = nil
 }
 
 -- TODO: remove the laggy from the server
@@ -34,16 +35,11 @@ function Server:process_received_data(data, ip, port)
 	data = Json.decode(data)
 
 	if data.event == Events.Object then
-		local id = data.identifier
+		-- local id = data.identifier
+		-- self.objects[id] = data.obj
 
-		if id == 'char3' then
-			print('object received', id)
-		end
-
-		self.objects[id] = data.obj
-
-		local user = self:get_other_player(ip, port)
-		self:send({ event=Events.Object, obj=data.obj, identifier=id }, user.ip, user.port)
+		local user = Match:get_other_player(ip, port, 1)
+		self:send({ event=Events.Object, obj=data.obj, identifier=data.identifier }, user.ip, user.port)
 	end
 
 	if data.event == Events.Connect then
@@ -63,26 +59,8 @@ function Server:handle_matchmaking(ip, port)
 	local user = User:get(ip, port)
 
 	if user ~= nil then
-		Match:add_user(user, 'room1')
+		Match:add_user(user)
 	end
-end
-
---[[
-	receive the ip and port for the one who sent the message,
-	but in this case we want the person who doesn't sent
-]]
-function Server:get_other_player(ip, port)
-	local users = Match:get_users('room1')
-	local user
-
-	for _,v in pairs(users) do
-		-- I know that each match has only 2 players
-		if v.ip ~= ip or v.port ~= port then
-			user = v
-		end
-	end
-
-	return user
 end
 
 function Server:broadcast(message)
