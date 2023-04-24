@@ -21,7 +21,7 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 **Version history:** 0.0.1 - added
 
 ## Display_name
-**Description:** The profile's display name.
+**Description:** The profile's display name (Username + domain).
 
 **Type:** Varchar(25)
 
@@ -34,8 +34,8 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 
 **Version history:** 0.0.1 - added
 
-## URI
-**Description:** Username + domain.
+## Domain
+**Description:** The domain of the current server.
 
 **Type:** Varchar(60)
 
@@ -50,6 +50,8 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 
 ## Type
 **Description:** Define the user type of the account, can also be understood as [actor type](https://www.w3.org/TR/activitystreams-vocabulary/#actor-types).
+
+**Default:** Person
 
 **Type:** Varchar(20)
 
@@ -80,5 +82,14 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 **Description:** When the account was created.
 
 **Type:** Datetime
+
+**Version history:** 0.0.1 - added
+
+## Level
+**Description:** The user level.
+
+**Default:** 1
+
+**Type:** Int
 
 **Version history:** 0.0.1 - added
