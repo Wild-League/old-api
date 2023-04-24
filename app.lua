@@ -1,14 +1,13 @@
 local lapis = require('lapis')
-local db = require('lapis.db')
+
+local web = require('src.web.web')
+local api = require('src.api.api')
 
 local app = lapis.Application()
 
-app:get('/', function()
-	-- local res = table.unpack(db.query('SELECT username FROM account where username = ?', 'ropoko'))
+app.views_prefix = 'src.web.views'
 
-	-- local username = (function() if res ~= nil then return res.username else return 'anonymous' end end)()
-
-  return 'Welcome to Lapis: '..'username'
-end)
+app:include(web, { name='web' })
+app:include(api, { name='api' })
 
 return app

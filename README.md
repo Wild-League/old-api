@@ -3,11 +3,7 @@
 # Project
 
 ## UDP Server
-Used for pass data in game
-
-```bash
-lua udp_server.lua
-```
+Moved to another [repo](https://github.com/Wild-League/udp-server).
 
 ## HTTP Server
 using lapis, used to implement activityPub and take care of things that are related to the user and server.
