@@ -19,4 +19,19 @@ account:post(prefix_route:add('api', '/account', function(self)
 	return { status = 201 }
 end))
 
+account:get(prefix_route:add('api', '/account/:id', function(self)
+	local acct = AccountService:get_by_id(self.params.id)
+
+	return {
+		json = {
+			id = acct.id,
+			username = acct.username,
+			display_name = acct.display_name,
+			level = acct.level,
+			created_at = acct.created_at,
+			bio = acct.bio
+		}
+	}
+end))
+
 return account

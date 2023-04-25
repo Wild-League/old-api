@@ -35,8 +35,9 @@ end
 function AccountService:create(acct)
 	Account:create({
 		username = acct.username,
-		display_name = acct.username,
+		display_name = '@' .. acct.username .. config.domain,
 		email = acct.email,
+		-- TODO: cryptography password
 		password = acct.password,
 		agreement = acct.agreement,
 		domain = config.domain,
