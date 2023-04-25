@@ -93,3 +93,24 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 **Type:** Int
 
 **Version history:** 0.0.1 - added
+
+## Email
+**Description:** The email used for login.
+
+**Type:** Varchar(100)
+
+**Version history:** 0.0.1 - added
+
+## Password
+**Description:** The password used for login.
+
+**Type:** Varchar(100)
+
+**Version history:** 0.0.1 - added
+
+## Agreement
+**Description:** If the users agrees with the server rules.
+
+**Type:** Boolean
+
+**Version history:** 0.0.1 - added

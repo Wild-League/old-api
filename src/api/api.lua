@@ -1,5 +1,5 @@
 local lapis = require('lapis')
-local users = require('src.api.users')
+local users = require('src.api.account')
 
 local api, _ = lapis.Application:extend('app')
 

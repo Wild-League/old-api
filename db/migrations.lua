@@ -16,7 +16,10 @@ return {
 			{ 'outbox_url', types.varchar },
 			{ 'icon', types.varchar },
 			{ 'created_at', types.date },
-			{ 'level', types.numeric({ default=1 }) }
+			{ 'level', types.numeric({ default=1 }) },
+			{ 'email', 'character varying(100)' },
+			{ 'password', 'character varying(100)' },
+			{ 'agreement', types.boolean }
 		})
 	end
 }

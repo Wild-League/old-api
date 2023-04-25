@@ -10,5 +10,8 @@ config("development", {
 		user = 'wild-league',
 		password = '123',
 		database = 'wild-league'
-	}
+	},
+
+	url = 'http://localhost:9090/', -- https://wildleague.org
+	domain = '@wildleague.org'
 })
