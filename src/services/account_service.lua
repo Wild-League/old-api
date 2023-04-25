@@ -1,7 +1,7 @@
 local Model = require("lapis.db.model").Model
 local config = require("lapis.config").get()
 
-local Account = Model:extend('account')
+local Account = Model:extend('accounts')
 
 --[[
 	Service that does all things related to the account table.

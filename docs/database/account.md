@@ -81,7 +81,7 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 ## Created_at
 **Description:** When the account was created.
 
-**Type:** Datetime
+**Type:** Date
 
 **Version history:** 0.0.1 - added
 
