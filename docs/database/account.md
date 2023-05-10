@@ -41,8 +41,15 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 
 **Version history:** 0.0.1 - added
 
-## URL
-**Description:** Location of user's profile page.
+## Short_URL
+**Description:** Short location of user's profile page "https://wildleague.org/@ropoko".
+
+**Type:** Varchar(100)
+
+**Version history:** 0.0.1 - added
+
+## Long_URL
+**Description:** Long location of user's profile page "https://wildleague.org/users/ropoko".
 
 **Type:** Varchar(100)
 
