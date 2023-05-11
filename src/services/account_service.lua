@@ -8,6 +8,14 @@ local Account = Model:extend('accounts')
 ]]
 local AccountService = {}
 
+function AccountService:exists(username)
+	if Account:find({ username = username }) then
+		return true
+	else
+		return false
+	end
+end
+
 --[[
 	returns the user by id
 ]]
@@ -30,6 +38,34 @@ function AccountService:get_by_username(username)
 end
 
 --[[
+	Generate url for users (short and long version), and for inbox and outbox.
+
+	if user_short, returns -> http://domain_url.com/@username
+
+	if user_long, returns -> http://domain_url.com/users/username
+
+	for inbox and outbox always return in the short version.
+]]
+local function create_url(type, username)
+	local urls = {
+		user_short = function()
+			return config.url .. '@' .. username
+		end,
+		user_long = function()
+			return config.url .. 'users/' .. username
+		end,
+		inbox = function()
+			return config.url .. '@' .. username .. '/inbox'
+		end,
+		outbox = function()
+			return config.url .. '@' .. username .. '/outbox'
+		end
+	}
+
+	return urls[type]()
+end
+
+--[[
 	create the user and return success or failure
 ]]
 function AccountService:create(acct)
@@ -41,9 +77,10 @@ function AccountService:create(acct)
 		password = acct.password,
 		agreement = acct.agreement,
 		domain = config.domain,
-		url = config.url .. '@' .. acct.username,
-		inbox_url = config.url .. '@' .. acct.username .. '/inbox',
-		outbox_url = config.url .. '@' .. acct.username .. '/outbox',
+		short_url = create_url('user_short', acct.username),
+		long_url = create_url('user_long', acct.username),
+		inbox_url = create_url('inbox', acct.username),
+		outbox_url = create_url('outbox', acct.username),
 		created_at = os.date(),
 		icon = 'static/default-user.png'
 	})

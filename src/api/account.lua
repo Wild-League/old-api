@@ -22,6 +22,12 @@ end))
 account:get(prefix_route:add('api', '/account/:id', function(self)
 	local acct = AccountService:get_by_id(self.params.id)
 
+	if not acct then
+		return {
+			status = 404
+		}
+	end
+
 	return {
 		json = {
 			id = acct.id,

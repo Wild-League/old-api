@@ -4,6 +4,19 @@ Inspired by the model defined by [mastodon](https://github.com/mastodon/mastodon
 
 For most of the props here, I'm following the [spec defined by w3](https://www.w3.org/TR/activitypub/#actor-objects)
 
+# Server user
+That's a special user that need to be created, mainly to get info about the server itself.
+
+Since webfinger always require 'acct' on requests and also to keep compatibility, you need to create a user that has the same as the domain.
+
+Example:
+
+Domain: `@wildleague.org` -> User: `wildleague.org`
+
+Just to keep it simple, it's recommended to create this user first.
+
+The type of this user will be 'Application', following [w3](https://www.w3.org/TR/activitystreams-vocabulary/#actor-types).
+
 # Fields
 
 ## Id

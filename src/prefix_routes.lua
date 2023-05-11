@@ -1,6 +1,7 @@
 local PrefixRoute = {
 	api = '/api',
 	auth = '/auth',
+	well_known = '/.well-known/webfinger',
 
 	__index = function(key)
 		error(string.format('the prefix: "%s" is not set in PrefixRoute', key))
