@@ -40,7 +40,9 @@ webfinger:get(prefix_routes:add('well_known', '', function(self)
 	if acct then
 		-- 6, because I know that the ':' is at 5
 		-- %w == \w
-		local username = string.match(resource, '^%w*', 6)
+		local username = string.match(resource, '[%w%.]+', 6)
+
+		print(username)
 
 		if Account:exists(username) then
 			if is_server_equal_user(username) then
