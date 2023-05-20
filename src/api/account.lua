@@ -14,9 +14,13 @@ account:post(prefix_route:add('api', '/account', function(self)
 	end
 
 	-- TODO: check params
-	AccountService:create(req)
+	local user = AccountService:create(req)
 
-	return { status = 201 }
+	if user then
+		return { status = 201 }
+	else
+		return user
+	end
 end))
 
 account:get(prefix_route:add('api', '/account/:id', function(self)

@@ -66,13 +66,27 @@ local function create_url(type, username)
 end
 
 --[[
-	create the user and return success or failure
+	create the user
+
+	@return:
+	- success: return the user itself
+	- failure:
+		- return nil if the user could not be created
+		- return a table with status_code 400 and a message
 ]]
 function AccountService:create(acct)
-	Account:create({
+	if not self:is_user_type_valid(acct.type) then
+		return {
+			status = 400,
+			json = { message =  "Field 'type' is not valid." }
+		}
+	end
+
+	return Account:create({
 		username = acct.username,
 		display_name = '@' .. acct.username .. config.domain,
 		email = acct.email,
+		type = acct.type,
 		-- TODO: cryptography password
 		password = acct.password,
 		agreement = acct.agreement,
@@ -84,6 +98,31 @@ function AccountService:create(acct)
 		created_at = os.date(),
 		icon = 'static/default-user.png'
 	})
+end
+
+--[[
+	Check if the user type is valid following the AP actor types,
+	if type is nil, then it will receive value 'Person'.
+	https://www.w3.org/TR/activitystreams-vocabulary/#actor-types
+]]
+function AccountService:is_user_type_valid(type)
+	if type == nil then
+		type = 'person'
+	end
+
+	local valid_types = {
+		'person',
+		'application',
+		'group' -- TODO: implement guilds | not implemented yet
+	}
+
+	for _,t in pairs(valid_types) do
+		if t == string.lower(type) then
+			return true
+		end
+	end
+
+	return false
 end
 
 return AccountService
