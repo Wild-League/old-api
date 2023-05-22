@@ -1,10 +1,10 @@
 local lapis = require('lapis')
-local signin = require('src.web.controllers.auth.signin')
+local login = require('src.web.controllers.auth.login')
 local signup = require('src.web.controllers.auth.signup')
 
 local auth = lapis.Application()
 
-auth:include(signin)
+auth:include(login)
 auth:include(signup)
 
 return auth

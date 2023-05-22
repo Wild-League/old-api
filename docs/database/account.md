@@ -1,4 +1,4 @@
-# Table account
+# Table Accounts
 
 Inspired by the model defined by [mastodon](https://github.com/mastodon/mastodon/blob/99e3e152cd2180cfa9a5bcafae208d44f31078f8/db/schema.rb#L143)
 
