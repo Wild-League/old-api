@@ -63,6 +63,7 @@ function mt:response_server(account)
 		status = 200,
 		json = {
 			subject = account,
+			game_server = true,
 			aliases = {
 				[1] = config.url
 			},

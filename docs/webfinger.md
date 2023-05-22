@@ -36,6 +36,7 @@ Know about the server user here -> `docs/database/account`
 ```json
 {
 	"subject": "acct:user@domain.com",
+	"game_server": true,
 	"aliases": [
 		"https://domain.com/"
 	],
