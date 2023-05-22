@@ -43,7 +43,7 @@ The type of this user will be 'Application', following [w3](https://www.w3.org/T
 ## Bio
 **Description:** The profile's bio or description - stored as HTML.
 
-**Type:** Varchar(500)
+**Type:** _Nullable_ - Varchar(500)
 
 **Version history:** 0.0.1 - added
 

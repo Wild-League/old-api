@@ -32,7 +32,7 @@ Represent a post posted by an account.
 ## Edited_at
 **Description:** The date the post was edited.
 
-**Type:** Date
+**Type:** _Nullable_ - Date
 
 **Version history:** 0.0.1 - added
 
@@ -53,13 +53,13 @@ Represent a post posted by an account.
 ## In_reply_to_post_id
 **Description:** Id of the post being replied to.
 
-**Type:** Int - (Foreign Key Post)
+**Type:** _Nullable_ - Int - (Foreign Key Post)
 
 **Version history:** 0.0.1 - added
 
 ## In_reply_to_account_id
 **Description:** Id of the account that authored the reply.
 
-**Type:** Int - (Foreign Key Accounts)
+**Type:** _Nullable_ - Int - (Foreign Key Accounts)
 
 **Version history:** 0.0.1 - added

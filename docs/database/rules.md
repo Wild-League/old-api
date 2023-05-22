@@ -36,6 +36,6 @@ Alter table rules alter column created_at set default current_date
 ## Updated_at
 **Description:** When the rules was updated, null otherwise.
 
-**Type:** Date
+**Type:** _Nullable_ - Date
 
 **Version history:** 0.0.1 - added
