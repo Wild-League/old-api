@@ -7,7 +7,6 @@ local account, _ = lapis.Application:extend('api')
 
 --[[
 	create an account
-
 ]]
 account:post(prefix_route:add('api', '/account', function(self)
 	local req = self.params

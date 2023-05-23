@@ -4,9 +4,8 @@
 
 - Required query params: resource=acct
 
-example of request: `/.well-known/webfinger?resource=acct:user@domain.com`
-
-## Response for users
+## Account Response
+`/.well-known/webfinger?resource=acct:user@domain.com`
 
 ```json
 {
@@ -30,25 +29,16 @@ example of request: `/.well-known/webfinger?resource=acct:user@domain.com`
 }
 ```
 
-## Response for server user
-Know about the server user here -> `docs/database/account`
+## Nodeinfo Response
+`/.well-known/webfinger/nodeinfo`
 
 ```json
 {
-	"subject": "acct:user@domain.com",
-	"game_server": true,
-	"aliases": [
-		"https://domain.com/"
-	],
 	"links": [
 		{
-			"rel": "self",
-			"type": "application/activity+json",
-			"href": "https://domain.com/"
+			"rel": "http://nodeinfo.diaspora.software/ns/schema/2.1",
+			"href": "http://localhost:9090/api/nodeinfo"
 		}
-	],
-	"details": [
-		"count_users": 0,
 	]
 }
 ```

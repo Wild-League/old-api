@@ -1,6 +1,6 @@
 local lapis = require('lapis')
 local util = require('lapis.util')
-local config = require("lapis.config").get()
+local config = require('lapis.config').get()
 local prefix_routes = require('src.prefix_routes')
 
 local Account = require('src.services.account_service')
@@ -9,21 +9,13 @@ local webfinger, mt = lapis.Application:extend('well_known')
 
 --[[
 	Check if the username is the same as the server
-	Since webfinger always require 'acct', and to keep
-	compatibility, we need to create special user with the username that is the same
-	as the domain.
-
-	So, if the domain is: 'wildleague.org' the special username is 'wildleague.org'
-
-	This is thought to the initial contact with the server, to know if the instance
-	is a game instance or not.
 ]]
-local function is_server_equal_user(username)
-	-- remove the '@'
-	local domain = string.match(config.domain, '.*', 2)
+-- local function is_server_equal_user(username)
+-- 	-- remove the '@'
+-- 	local domain = string.match(config.domain, '.*', 2)
 
-	return username == domain
-end
+-- 	return username == domain
+-- end
 
 webfinger:get(prefix_routes:add('well_known', '', function(self)
 	local resource = util.unescape(self.req.parsed_url.query)
@@ -45,11 +37,7 @@ webfinger:get(prefix_routes:add('well_known', '', function(self)
 		print(username)
 
 		if Account:exists(username) then
-			if is_server_equal_user(username) then
-				return mt:response_server(resource)
-			else
-				return mt:response_user(resource, username)
-			end
+			return mt:response_user(resource, username)
 		end
 
 		return { status = 404 }
@@ -58,26 +46,20 @@ webfinger:get(prefix_routes:add('well_known', '', function(self)
 	return { status = 400, json = { message = "missing 'acct'" } }
 end))
 
-function mt:response_server(account)
+webfinger:get(prefix_routes:add('well_known', '/nodeinfo', function()
 	return {
 		status = 200,
 		json = {
-			subject = account,
-			game_server = true,
-			aliases = {
-				[1] = config.url
-			},
 			links = {
-				rel = 'self',
-				type = 'application/activity+json',
-				href = config.url
-			},
-			details = {
-				count_users = 0 -- TODO: create view 'Instance' to gather info related to the instance itself
+				[1] = {
+					rel = 'http://nodeinfo.diaspora.software/ns/schema/2.1',
+					href = config.url .. 'api/nodeinfo'
+				}
 			}
 		}
 	}
-end
+end))
+
 
 function mt:response_user(account, username)
 	local user = Account:get_by_username(username)
