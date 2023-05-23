@@ -5,6 +5,10 @@ local AccountService = require('src.services.account_service')
 
 local account, _ = lapis.Application:extend('api')
 
+--[[
+	create an account
+
+]]
 account:post(prefix_route:add('api', '/account', function(self)
 	local req = self.params
 
@@ -23,6 +27,11 @@ account:post(prefix_route:add('api', '/account', function(self)
 	end
 end))
 
+--[[
+	get the account by id
+
+	example: url:/account/1
+]]
 account:get(prefix_route:add('api', '/account/:id', function(self)
 	local acct = AccountService:get_by_id(self.params.id)
 

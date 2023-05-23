@@ -10,18 +10,20 @@ local auth, _ = lapis.Application:extend('api')
 auth:post(prefix_route:add('api', '/auth/login', function(self)
 	local req = self.params
 
-	if not req.nickname or not req.password then
+	if not req.username or not req.password then
 		return { status = 400, json = {
-			message = "Missing parameters nickname or password"
+			message = "Missing 'username' or 'password'"
 		}}
 	end
 
-	local user = AccountService:exists(req.nickname)
+	local user = AccountService:exists(req.username)
 
 	if user then
-		return { status = 200, json = { token = '' } }
+		-- TODO: should I return status codes from the service?
+		-- probably not
+		return AccountService:check_credentials(req)
 	else
-		return { status = 404, json = { message = 'User not found.' } }
+		return { status = 404, json = { message = 'User not found.' }}
 	end
 end))
 

@@ -1,5 +1,8 @@
+local bcrypt = require('bcrypt')
 local Model = require("lapis.db.model").Model
 local config = require("lapis.config").get()
+
+local JWTService = require('src.services.jwt_service')
 
 local Account = Model:extend('accounts')
 
@@ -8,6 +11,10 @@ local Account = Model:extend('accounts')
 ]]
 local AccountService = {}
 
+--[[
+ TODO: write documentation
+ - How to add 'exists' function to all entities?
+]]
 function AccountService:exists(username)
 	if Account:find({ username = username }) then
 		return true
@@ -35,6 +42,34 @@ end
 ]]
 function AccountService:get_by_username(username)
 	return Account:find({ username = username })
+end
+
+--[[
+	TODO: add docs
+]]
+local function hash_password(password)
+	return bcrypt.digest(password, config.default_salt_password)
+end
+
+--[[
+	TODO: move this to AuthService.
+
+	Compare the request with the account on database
+]]
+function AccountService:check_credentials(req)
+	local acct = self:get_by_username(req.username)
+
+	if acct.username == req.username and assert(bcrypt.verify(req.password, acct.password)) then
+		local token = JWTService:encode(acct)
+		return { status = 200, json = { access_token = token }}
+	else
+		return {
+			status = 401,
+			json = {
+				message = 'Wrong username or password'
+			}
+		}
+	end
 end
 
 --[[
@@ -66,6 +101,19 @@ local function create_url(type, username)
 end
 
 --[[
+	hash the password received and compare to the password on db.
+
+	@params:
+	- password: the user password
+
+	@returns:
+	- True if passwords are equal, otherwise False
+]]
+function AccountService:compare_hash_password(password)
+	return hash_password(password) == true
+end
+
+--[[
 	create the user
 
 	@return:
@@ -87,8 +135,7 @@ function AccountService:create(acct)
 		display_name = '@' .. acct.username .. config.domain,
 		email = acct.email,
 		type = acct.type,
-		-- TODO: cryptography password
-		password = acct.password,
+		password = hash_password(acct.password),
 		agreement = acct.agreement,
 		domain = config.domain,
 		short_url = create_url('user_short', acct.username),

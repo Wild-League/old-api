@@ -1,6 +1,13 @@
 local config = require("lapis.config")
 
 config("development", {
+	-- session
+	secret = 'mysecret123123',
+	session_name = 'wildleague_session',
+
+	-- jwt
+	default_salt_password = 15,
+
   server = "nginx",
   code_cache = "off",
   num_workers = "1",

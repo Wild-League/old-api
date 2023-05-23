@@ -21,3 +21,23 @@ Success - 201
 Error - ?
 
 // TODO: Create list of possible errors
+
+## Get Account
+
+`GET /api/account`
+
+### Response
+
+Success - 200
+
+```json
+{
+	"username": "user",
+	"id": 1,
+	"level": 1,
+	"created_at": "2023-05-19",
+	"display_name": "@user@domain"
+}
+```
+
+Error - 404 - No Body
