@@ -172,4 +172,11 @@ function AccountService:is_user_type_valid(type)
 	return false
 end
 
+--[[
+	Return the number of accounts
+]]
+function AccountService:count_accounts()
+	return Account:count()
+end
+
 return AccountService

@@ -39,4 +39,11 @@ function PostService:get_by_id(id)
 	return nil
 end
 
+--[[
+	Return the number of posts created
+]]
+function PostService:count_posts()
+	return Post:count()
+end
+
 return PostService
