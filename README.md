@@ -42,7 +42,7 @@ Implementation based in [w3](https://www.w3.org/TR/activitystreams-vocabulary/).
   - [ ] Relationship
   - [ ] Image
   - [ ] Video -> not sure about this
-  - [ ] Note
+  - [ ] Note - Post
   - [ ] Article (maybe)
   - [ ] Event
   - [ ] Place -> not sure about this

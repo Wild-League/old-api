@@ -41,6 +41,7 @@ account:get(prefix_route:add('api', '/account/:id', function(self)
 	end
 
 	return {
+		status = 200,
 		json = {
 			id = acct.id,
 			username = acct.username,

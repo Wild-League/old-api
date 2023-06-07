@@ -36,11 +36,11 @@ function mt:json_response()
 			openRegistrations = true,
 			usage = {
 				users = {
-					total = AccountService:count_accounts(),
+					total = AccountService:count(),
 					activeHalfYear = 0,
 					activeMonth = 0
 				},
-				localPosts = PostService:count_posts(),
+				localPosts = PostService:count(),
 				localComments = 0
 			}
 		}

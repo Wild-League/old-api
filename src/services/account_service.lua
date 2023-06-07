@@ -175,7 +175,7 @@ end
 --[[
 	Return the number of accounts
 ]]
-function AccountService:count_accounts()
+function AccountService:count()
 	return Account:count()
 end
 
