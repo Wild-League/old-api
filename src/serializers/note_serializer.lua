@@ -13,6 +13,10 @@ local NoteSerializer = {}
 	- Posts with tags -
 ]]
 function NoteSerializer:serializer(post)
+	-- match example: @ropoko@indieweb.social
+	-- local mentions = string.gmatch(post.content, '@[%w%.]+@([%w_]+|%.)[%w_]+')
+
+
 	-- TODO: get username
 	local account = PostService:get_author(post.account_id)
 	local username = account.username
