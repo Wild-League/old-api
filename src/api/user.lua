@@ -1,14 +1,14 @@
 local lapis = require('lapis')
 local prefix_route = require('src.prefix_routes')
 
-local AccountService = require('src.services.account_service')
+local UserService = require('src.services.user_service')
 
-local account, _ = lapis.Application:extend('api')
+local user, _ = lapis.Application:extend('api')
 
 --[[
-	create an account
+	create an user
 ]]
-account:post(prefix_route:add('api', '/account', function(self)
+user:post(prefix_route:add('api', '/user', function(self)
 	local req = self.params
 
 	if not req.agreement then
@@ -17,7 +17,7 @@ account:post(prefix_route:add('api', '/account', function(self)
 	end
 
 	-- TODO: check params
-	local user = AccountService:create(req)
+	local user = UserService:create(req)
 
 	if user then
 		return { status = 201 }
@@ -27,12 +27,12 @@ account:post(prefix_route:add('api', '/account', function(self)
 end))
 
 --[[
-	get the account by id
+	get the user by id
 
-	example: url:/account/1
+	example: url:/user/1
 ]]
-account:get(prefix_route:add('api', '/account/:id', function(self)
-	local acct = AccountService:get_by_id(self.params.id)
+user:get(prefix_route:add('api', '/user/:id', function(self)
+	local acct = UserService:get_by_id(self.params.id)
 
 	if not acct then
 		return {
@@ -53,4 +53,4 @@ account:get(prefix_route:add('api', '/account/:id', function(self)
 	}
 end))
 
-return account
+return user
