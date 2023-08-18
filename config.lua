@@ -14,9 +14,9 @@ config("development", {
 	port = 9090,
 	postgres = {
 		host = '127.0.0.1',
-		user = 'wild-league',
+		user = 'postgres',
 		password = '123',
-		database = 'wild-league'
+		database = 'wild_league_dev'
 	},
 
 	url = 'http://localhost:9090/', -- https://wildleague.org
