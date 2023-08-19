@@ -3,7 +3,7 @@ local util = require('lapis.util')
 local config = require('lapis.config').get()
 local prefix_routes = require('src.prefix_routes')
 
-local Account = require('src.services.account_service')
+local Account = require('src.services.user_service')
 
 local webfinger, mt = lapis.Application:extend('well_known')
 

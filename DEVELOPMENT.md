@@ -13,4 +13,3 @@ Install using luarocks. On MAC, it's better to follow [this steps](https://gist.
 `$ luarocks install lapis`
 
 > Note: if there is an error: `Could not find header file for CRYPTO`, read [this](https://github.com/leafo/lapis/issues/632).
-

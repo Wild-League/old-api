@@ -1,5 +1,5 @@
 local Model = require("lapis.db.model").Model
-local AccountService = require('src.services.account_service')
+local UserService = require('src.services.user_service')
 local config = require('lapis.config').get()
 
 local Post = Model:extend('posts')
@@ -16,7 +16,7 @@ local PostService = {}
 ]]
 function PostService:create(content, reply_to_post)
 	-- TODO: need to handle replies
-	-- local reply_account_id = AccountService:get_by_id()
+	-- local reply_account_id = UserService:get_by_id()
 
 	return Post:create({
 		uri = '',
@@ -44,7 +44,7 @@ end
 ]]
 function PostService:get_author(id)
 	local post = self:get_by_id(id)
-	return AccountService:get_by_id(post.account_id)
+	return UserService:get_by_id(post.account_id)
 end
 
 --[[

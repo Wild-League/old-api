@@ -1,7 +1,7 @@
 local lapis = require('lapis')
 local prefix_route = require('src.prefix_routes')
 
-local AccountService = require('src.services.account_service')
+local UserService = require('src.services.user_service')
 
 local auth, _ = lapis.Application:extend('api')
 
@@ -16,12 +16,12 @@ auth:post(prefix_route:add('api', '/auth/login', function(self)
 		}}
 	end
 
-	local user = AccountService:exists(req.username)
+	local user = UserService:exists(req.username)
 
 	if user then
 		-- TODO: should I return status codes from the service?
 		-- probably not
-		return AccountService:check_credentials(req)
+		return UserService:check_credentials(req)
 	else
 		return { status = 404, json = { message = 'User not found.' }}
 	end

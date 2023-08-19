@@ -9,13 +9,13 @@ local Account = Model:extend('accounts')
 --[[
 	Service that does all things related to the account table.
 ]]
-local AccountService = {}
+local UserService = {}
 
 --[[
  TODO: write documentation
  - How to add 'exists' function to all entities?
 ]]
-function AccountService:exists(username)
+function UserService:exists(username)
 	if Account:find({ username = username }) then
 		return true
 	else
@@ -26,21 +26,21 @@ end
 --[[
 	returns the user by id
 ]]
-function AccountService:get_by_id(id)
+function UserService:get_by_id(id)
 	return Account:find(id)
 end
 
 --[[
 	Returns the user by email
 ]]
-function AccountService:get_by_email(email)
+function UserService:get_by_email(email)
 	return Account:find({ email = email })
 end
 
 --[[
 	Returns the user by username
 ]]
-function AccountService:get_by_username(username)
+function UserService:get_by_username(username)
 	return Account:find({ username = username })
 end
 
@@ -56,7 +56,7 @@ end
 
 	Compare the request with the account on database
 ]]
-function AccountService:check_credentials(req)
+function UserService:check_credentials(req)
 	local acct = self:get_by_username(req.username)
 
 	if acct.username == req.username and assert(bcrypt.verify(req.password, acct.password)) then
@@ -109,7 +109,7 @@ end
 	@returns:
 	- True if passwords are equal, otherwise False
 ]]
-function AccountService:compare_hash_password(password)
+function UserService:compare_hash_password(password)
 	return hash_password(password) == true
 end
 
@@ -122,7 +122,7 @@ end
 		- return nil if the user could not be created
 		- return a table with status_code 400 and a message
 ]]
-function AccountService:create(acct)
+function UserService:create(acct)
 	if not self:is_user_type_valid(acct.type) then
 		return {
 			status = 400,
@@ -152,7 +152,7 @@ end
 	if type is nil, then it will receive value 'Person'.
 	https://www.w3.org/TR/activitystreams-vocabulary/#actor-types
 ]]
-function AccountService:is_user_type_valid(type)
+function UserService:is_user_type_valid(type)
 	if type == nil then
 		type = 'person'
 	end
@@ -175,8 +175,8 @@ end
 --[[
 	Return the number of accounts
 ]]
-function AccountService:count()
+function UserService:count()
 	return Account:count()
 end
 
-return AccountService
+return UserService

@@ -1,6 +1,6 @@
 local lapis = require('lapis')
 local prefix_routes = require('src.prefix_routes')
-local AccountService = require('src.services.account_service')
+local UserService = require('src.services.user_service')
 
 local users, _ = lapis.Application:extend('web')
 
@@ -14,7 +14,7 @@ users:get(prefix_routes:add('users', '(/:username)', function(self)
 		return { status = 404 }
 	end
 
-	local account = AccountService:get_by_username(username)
+	local account = UserService:get_by_username(username)
 
 	if not account then
 		-- TODO: create view

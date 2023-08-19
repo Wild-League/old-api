@@ -1,7 +1,7 @@
 local lapis = require('lapis')
 local prefix_route = require('src.prefix_routes')
 
-local AccountService = require('src.services.account_service')
+local UserService = require('src.services.user_service')
 local PostService = require('src.services.post_service')
 
 local nodeinfo, mt = lapis.Application:extend('api')
@@ -36,7 +36,7 @@ function mt:json_response()
 			openRegistrations = true,
 			usage = {
 				users = {
-					total = AccountService:count(),
+					total = UserService:count(),
 					activeHalfYear = 0,
 					activeMonth = 0
 				},
