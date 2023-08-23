@@ -14,6 +14,7 @@ COPY . .
 RUN apk add --no-cache git libc-dev readline readline-dev gcc make wget unzip
 RUN apk add --no-cache openssl openssl-dev lua5.1 lua5.1-dev luarocks
 RUN luarocks-5.1 install luaossl
+# TODO: will this does not work?
 # RUN luarocks-5.1 install wildleague-0.0.1-1.rockspec
 RUN luarocks-5.1 install pgmoon
 RUN luarocks-5.1 install bcrypt
