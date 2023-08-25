@@ -23,4 +23,5 @@ RUN luarocks-5.1 install luabitop
 RUN luarocks-5.1 install lua-resty-jwt
 RUN luarocks-5.1 install lapis
 
-CMD ["lapis", "serve"]
+CMD ["lapis", "migrate", "--migrations-module", "./db/migrations", "production"]
+CMD ["lapis", "serve", "production"]
