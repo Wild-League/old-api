@@ -1,4 +1,4 @@
-# Table Accounts
+# Table Users
 
 Inspired by the model defined by [mastodon](https://github.com/mastodon/mastodon/blob/99e3e152cd2180cfa9a5bcafae208d44f31078f8/db/schema.rb#L143)
 
@@ -7,7 +7,7 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 # Fields
 
 ## Id
-**Description:** Account id.
+**Description:** User id.
 
 **Type:** Int - AutoIncrement
 
@@ -56,7 +56,7 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 **Version history:** 0.0.1 - added
 
 ## Type
-**Description:** Define the user type of the account, can also be understood as [actor type](https://www.w3.org/TR/activitystreams-vocabulary/#actor-types).
+**Description:** Define the user type of the user, can also be understood as [actor type](https://www.w3.org/TR/activitystreams-vocabulary/#actor-types).
 
 **Default:** Person
 
@@ -86,7 +86,7 @@ For most of the props here, I'm following the [spec defined by w3](https://www.w
 **Version history:** 0.0.1 - added
 
 ## Created_at
-**Description:** When the account was created.
+**Description:** When the user was created.
 
 **Type:** Date
 

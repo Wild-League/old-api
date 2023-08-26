@@ -18,8 +18,8 @@ function NoteSerializer:serializer(post)
 
 
 	-- TODO: get username
-	local account = PostService:get_author(post.account_id)
-	local username = account.username
+	local user = PostService:get_author(post.user_id)
+	local username = user.username
 
 	-- TODO: get post reply
 	local post_reply = PostService:get_by_id(post.in_reply_to_post_id)

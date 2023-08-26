@@ -4,7 +4,7 @@
 
 - Required query params: resource=acct
 
-## Account Response
+## User Response
 `/.well-known/webfinger?resource=acct:user@domain.com`
 
 ```json

@@ -14,9 +14,9 @@ users:get(prefix_routes:add('users', '(/:username)', function(self)
 		return { status = 404 }
 	end
 
-	local account = UserService:get_by_username(username)
+	local user = UserService:get_by_username(username)
 
-	if not account then
+	if not user then
 		-- TODO: create view
 		return { status = 404 }
 	end
@@ -30,7 +30,7 @@ users:get(prefix_routes:add('users', '(/:username)', function(self)
 	end
 
 	-- TODO: create view
-	return 'user ' .. account.username
+	return 'user ' .. user.username
 end))
 
 return users

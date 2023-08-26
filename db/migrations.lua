@@ -4,7 +4,7 @@ local types = schema.types
 
 return {
 	[1] = function()
-		schema.create_table('accounts', {
+		schema.create_table('users', {
 			{ 'id', types.serial, primary_key = true },
 			{ 'username', 'character varying(25) not null' }, -- https://github.com/leafo/lapis/issues/591
 			{ 'display_name', 'character varying(85) not null' },
@@ -37,10 +37,10 @@ return {
 			{ 'uri', types.varchar },
 			{ 'created_at', types.date },
 			{ 'edited_at', types.date({ null = true }) },
-			{ 'account_id', types.numeric },
+			{ 'user_id', types.numeric },
 			{ 'content', types.varchar },
 			{ 'in_reply_to_post_id', types.numeric({ null = true }) },
-			{ 'in_reply_to_account_id', types.numeric({ null = true }) },
+			{ 'in_reply_to_user_id', types.numeric({ null = true }) },
 		}, { if_not_exists = true } )
 	end
 }

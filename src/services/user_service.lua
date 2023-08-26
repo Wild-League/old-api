@@ -4,10 +4,10 @@ local config = require("lapis.config").get()
 
 local JWTService = require('src.services.jwt_service')
 
-local Account = Model:extend('accounts')
+local User = Model:extend('users')
 
 --[[
-	Service that does all things related to the account table.
+	Service that does all things related to the users table.
 ]]
 local UserService = {}
 
@@ -16,7 +16,7 @@ local UserService = {}
  - How to add 'exists' function to all entities?
 ]]
 function UserService:exists(username)
-	if Account:find({ username = username }) then
+	if User:find({ username = username }) then
 		return true
 	else
 		return false
@@ -27,21 +27,21 @@ end
 	returns the user by id
 ]]
 function UserService:get_by_id(id)
-	return Account:find(id)
+	return User:find(id)
 end
 
 --[[
 	Returns the user by email
 ]]
 function UserService:get_by_email(email)
-	return Account:find({ email = email })
+	return User:find({ email = email })
 end
 
 --[[
 	Returns the user by username
 ]]
 function UserService:get_by_username(username)
-	return Account:find({ username = username })
+	return User:find({ username = username })
 end
 
 --[[
@@ -54,7 +54,7 @@ end
 --[[
 	TODO: move this to AuthService.
 
-	Compare the request with the account on database
+	Compare the request with the user on database
 ]]
 function UserService:check_credentials(req)
 	local acct = self:get_by_username(req.username)
@@ -130,7 +130,7 @@ function UserService:create(acct)
 		}
 	end
 
-	return Account:create({
+	return User:create({
 		username = acct.username,
 		display_name = '@' .. acct.username .. config.domain,
 		email = acct.email,
@@ -173,10 +173,10 @@ function UserService:is_user_type_valid(type)
 end
 
 --[[
-	Return the number of accounts
+	Return the number of users
 ]]
 function UserService:count()
-	return Account:count()
+	return User:count()
 end
 
 return UserService

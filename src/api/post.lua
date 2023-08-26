@@ -24,10 +24,10 @@ post:post(prefix_route:add('api', '/post', function(self)
 				uri = p.uri,
 				created_at = p.created_at,
 				edited_at = p.edited_at,
-				account_id = p.account_id,
+				user_id = p.user_id,
 				content = p.content,
 				in_reply_to_post_id = p.in_reply_to_post_id,
-				in_reply_to_account_id = p.in_reply_to_account_id -- TODO: should I return info about the account? (username, etc),
+				in_reply_to_user_id = p.in_reply_to_user_id -- TODO: should I return info about the user? (username, etc),
 			}
 		}
 	else
@@ -53,10 +53,10 @@ post:get(prefix_route:add('api', '/post/:id', function(self)
 			uri = p.uri,
 			created_at = p.created_at,
 			edited_at = p.edited_at,
-			account_id = p.account_id,
+			user_id = p.user_id,
 			content = p.content,
 			in_reply_to_post_id = p.in_reply_to_post_id,
-			in_reply_to_account_id = p.in_reply_to_account_id
+			in_reply_to_user_id = p.in_reply_to_user_id
 		}
 	}
 end))

@@ -1,16 +1,16 @@
-# Accounts API Endpoints
+# Users API Endpoints
 
-## Create Account
+## Create User
 
-`POST /api/account`
+`POST /api/user`
 
 ### Request
 
-- `username`: **Required** String. The username for the account.
+- `username`: **Required** String. The username for the user.
 
-- `email`: **Required** String. The email for the account.
+- `email`: **Required** String. The email for the user.
 
-- `password`: **Required** String. The password for the account.
+- `password`: **Required** String. The password for the user.
 
 - `agreement`: **Required** Boolean. If the user agrees with the server rules.
 
@@ -22,9 +22,9 @@ Error - ?
 
 // TODO: Create list of possible errors
 
-## Get Account
+## Get User
 
-`GET /api/account`
+`GET /api/user`
 
 ### Response
 

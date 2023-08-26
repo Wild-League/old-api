@@ -1,6 +1,6 @@
 # Table Posts
 
-Represent a post posted by an account.
+Represent a post posted by an user.
 
 - Example of Announce: https://indieweb.social/users/ropoko/statuses/110232185728501358/activity
 
@@ -36,10 +36,10 @@ Represent a post posted by an account.
 
 **Version history:** 0.0.1 - added
 
-## Account Id
-**Description:** The id of the account that created the post.
+## User Id
+**Description:** The id of the user that created the post.
 
-**Type:** Int - (Foreign Key Accounts)
+**Type:** Int - (Foreign Key Users)
 
 **Version history:** 0.0.1 - added
 
@@ -57,9 +57,9 @@ Represent a post posted by an account.
 
 **Version history:** 0.0.1 - added
 
-## In_reply_to_account_id
-**Description:** Id of the account that authored the reply.
+## In_reply_to_user_id
+**Description:** Id of the user that authored the reply.
 
-**Type:** _Nullable_ - Int - (Foreign Key Accounts)
+**Type:** _Nullable_ - Int - (Foreign Key Users)
 
 **Version history:** 0.0.1 - added

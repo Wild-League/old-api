@@ -16,15 +16,15 @@ local PostService = {}
 ]]
 function PostService:create(content, reply_to_post)
 	-- TODO: need to handle replies
-	-- local reply_account_id = UserService:get_by_id()
+	-- local reply_user_id = UserService:get_by_id()
 
 	return Post:create({
 		uri = '',
 		created_at = os.date(),
-		account_id = 1, -- TODO: get id of the logged user
+		user_id = 1, -- TODO: get id of the logged user
 		content = content,
 		in_reply_to_post_id = nil,
-		in_reply_to_account_id = nil
+		in_reply_to_user_id = nil
 	})
 end
 
@@ -44,7 +44,7 @@ end
 ]]
 function PostService:get_author(id)
 	local post = self:get_by_id(id)
-	return UserService:get_by_id(post.account_id)
+	return UserService:get_by_id(post.user_id)
 end
 
 --[[

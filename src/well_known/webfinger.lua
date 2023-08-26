@@ -3,7 +3,7 @@ local util = require('lapis.util')
 local config = require('lapis.config').get()
 local prefix_routes = require('src.prefix_routes')
 
-local Account = require('src.services.user_service')
+local User = require('src.services.user_service')
 
 local webfinger, mt = lapis.Application:extend('well_known')
 
@@ -36,7 +36,7 @@ webfinger:get(prefix_routes:add('well_known', '', function(self)
 
 		print(username)
 
-		if Account:exists(username) then
+		if User:exists(username) then
 			return mt:response_user(resource, username)
 		end
 
@@ -61,13 +61,13 @@ webfinger:get(prefix_routes:add('well_known', '/nodeinfo', function()
 end))
 
 
-function mt:response_user(account, username)
-	local user = Account:get_by_username(username)
+function mt:response_user(user, username)
+	local new_user = User:get_by_username(username)
 
 	return {
 		status = 200,
 		json = {
-			subject = account,
+			subject = new_user,
 			aliases = {
 				[1] = user.short_url,
 				[2] = user.long_url
