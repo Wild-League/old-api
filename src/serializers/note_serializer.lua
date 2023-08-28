@@ -26,6 +26,7 @@ function NoteSerializer:serializer(post)
 	local url_post_reply = (function() if post_reply then return post_reply.uri else return nil end end)
 
 	return {
+		status = 200,
 		json = {
 			['@context'] = {
 				'https://www.w3.org/ns/activitystreams'
@@ -61,7 +62,7 @@ function NoteSerializer:serializer(post)
 					id = config.url .. 'users/' .. username .. '/posts/' .. post.id .. '/replies',
 					type = 'Collection',
 					items = {}
-					-- TODO: I dont know if I need it
+					-- TODO: I dont know if I need this for now
 					-- first = {
 					-- 	type = 'CollectionPage'
 					-- }

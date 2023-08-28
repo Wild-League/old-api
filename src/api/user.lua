@@ -17,13 +17,14 @@ user:post(prefix_route:add('api', '/user', function(self)
 	end
 
 	-- TODO: check params
-	local user = UserService:create(req)
+	local new_user = UserService:create(req)
 
-	if user then
-		return { status = 201 }
-	else
-		return user
-	end
+	return new_user
+	-- if new_user.status == then
+	-- 	return { status = 201 }
+	-- else
+	-- 	return new_user
+	-- end
 end))
 
 --[[

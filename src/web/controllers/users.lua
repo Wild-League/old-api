@@ -1,6 +1,7 @@
 local lapis = require('lapis')
 local prefix_routes = require('src.prefix_routes')
 local UserService = require('src.services.user_service')
+local UserSerializer = require('src.serializers.user_serializer')
 
 local users, _ = lapis.Application:extend('web')
 
@@ -26,7 +27,8 @@ users:get(prefix_routes:add('users', '(/:username)', function(self)
 	if headers['Accept'] then
 		-- TODO: Create serializer user
 		-- TODO: should return as ActivityPub object
-		return { status = 200, json = {} }
+		-- return { status = 200, json = {} }
+		return UserSerializer:serializer(user)
 	end
 
 	-- TODO: create view

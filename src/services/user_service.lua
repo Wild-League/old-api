@@ -123,6 +123,13 @@ end
 		- return a table with status_code 400 and a message
 ]]
 function UserService:create(acct)
+	if self:exists(acct.username) then
+		return {
+			status = 400,
+			json = { message = 'Username already in use' }
+		}
+	end
+
 	if not self:is_user_type_valid(acct.type) then
 		return {
 			status = 400,
