@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	color: #F1F1F1;
+	background-color: rgb(30 29 29);
+	font-family: 'Open Sans', sans-serif;
+}
+
+p, label {
+	font-size: 2vw;
+	line-height: 1.5;
+}
+
+h1 {
+	font-size: 5vw;
+	margin-top: 0.6rem;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+main > div {
+	margin: 1rem 0;
+	justify-self: flex-start;
+}
+
+main > div p > span {
+	color: #38b399;
+	font-weight: bold;
+}
+
+form {
+	height: 10vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+form input, form button {
+	width: 50vw;
+	font-size: 2vw;
+	font-family: 'Open Sans', sans-serif;
+}
+
+form input {
+	border: none;
+}
