@@ -25,3 +25,6 @@ RUN luarocks-5.1 install lapis
 
 CMD ["lapis", "migrate", "--migrations-module", "./db/migrations", "production"]
 CMD ["lapis", "serve", "production"]
+
+# CMD ["lapis", "migrate", "--migrations-module", "./db/migrations"]
+# CMD ["lapis", "serve"]

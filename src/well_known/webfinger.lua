@@ -37,7 +37,7 @@ webfinger:get(prefix_routes:add('well_known', '', function(self)
 		print(username)
 
 		if User:exists(username) then
-			return mt:response_user(resource, username)
+			return mt:response_user(username)
 		end
 
 		return { status = 404 }
@@ -61,22 +61,22 @@ webfinger:get(prefix_routes:add('well_known', '/nodeinfo', function()
 end))
 
 
-function mt:response_user(user, username)
-	local new_user = User:get_by_username(username)
+function mt:response_user(username)
+	local user = User:get_by_username(username)
 
 	return {
 		status = 200,
 		json = {
-			subject = new_user,
+			subject = 'acct:'..username..config.domain,
 			aliases = {
-				[1] = user.short_url,
+				[1] = 'https://wildleague.org/ropoko', -- user.short_url,
 				[2] = user.long_url
 			},
 			links = {
 				[1] = {
 					rel = 'http://webfinger.net/rel/profile-page',
 					type = 'text/html',
-					href = user.short_url
+					href = user.long_url
 				},
 				[2] = {
 					rel = 'self',
