@@ -42,5 +42,11 @@ return {
 			{ 'in_reply_to_post_id', types.numeric({ null = true }) },
 			{ 'in_reply_to_user_id', types.numeric({ null = true }) },
 		}, { if_not_exists = true } )
+	end,
+	[4] = function()
+		schema.create_table('waitlist', {
+			{ 'id', types.serial, primary_key = true },
+			{ 'email', 'character varying(100) not null' }
+		})
 	end
 }
