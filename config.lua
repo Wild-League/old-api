@@ -13,7 +13,7 @@ config("development", {
   num_workers = "1",
 	port = 9090,
 	postgres = {
-		host = '172.31.0.2',
+		host = 'localhost',
 		user = 'postgres',
 		password = '123',
 		database = 'wild_league_dev'
