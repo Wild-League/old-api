@@ -1,6 +1,19 @@
+import { useState } from 'react';
 import './styles/index.css';
 
 function App() {
+	const [email, setEmail] = useState('');
+
+	const submit = async () => {
+		await fetch('http://localhost:9090/api/waitlist', {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ email })
+		})
+	};
+
   return (
     <main>
 			<h1>Wild League</h1>
@@ -11,9 +24,9 @@ function App() {
 				<p>Gaming is about <span>community</span> </p>
 			</div>
 
-			<form>
+			<form onSubmit={submit}>
 				<label htmlFor='email'>Join the waitlist:</label>
-				<input id='email' type="email" placeholder='email' />
+				<input onChange={(e) => setEmail(e.target.value)} id='email' type="email" placeholder='email' value={email} />
 				<button type='submit'> Notify me when you launch </button>
 			</form>
 		</main>
