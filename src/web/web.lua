@@ -4,8 +4,6 @@ local auth = require('src.web.controllers.auth.auth')
 local post = require('src.web.controllers.post')
 local users = require('src.web.controllers.users')
 
--- TODO: how to integrate with react?
-
 local web, _ = lapis.Application:extend('app')
 
 web:enable('etlua')
