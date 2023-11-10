@@ -4,9 +4,9 @@ local prefix_routes = require('src.prefix_routes')
 
 local User = require('src.services.user_service')
 
-local webfinger, mt = lapis.Application:extend('well_known')
+local webfinger, mt = lapis.Application:extend('api')
 
-webfinger:get(prefix_routes:add('well_known', '', function(self)
+webfinger:get(prefix_routes:add('api', '/webfinger', function(self)
 	local username = self.params.username
 
 	if User:exists(username) then

@@ -4,6 +4,7 @@ local auth = require('src.api.auth')
 local post = require('src.api.post')
 local nodeinfo = require('src.api.nodeinfo')
 local waitlist = require('src.api.waitlist')
+local webfinger = require('src.api.webfinger')
 
 local api, _ = lapis.Application:extend('app')
 
@@ -12,5 +13,6 @@ api:include(auth)
 api:include(post)
 api:include(nodeinfo)
 api:include(waitlist)
+api:include(webfinger)
 
 return api
