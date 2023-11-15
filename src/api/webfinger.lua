@@ -13,7 +13,7 @@ webfinger:get(prefix_routes:add('api', '/webfinger', function(self)
 		return mt:response_user(username)
 	end
 
-	return { status = 404 }
+	return { status = 404, json = {} }
 end))
 
 function mt:response_user(username)
