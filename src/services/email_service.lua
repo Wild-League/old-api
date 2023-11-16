@@ -1,12 +1,13 @@
 local https = require('ssl.https')
 local ltn12 = require('ltn12')
 local json = require('lib.json')
+local get_email = require('src.handle_html')
 
 local EmailService = {
 	api_token = 'd0129e2f-5675-4b3a-997d-a7df0d802a61'
 }
 
-function EmailService:send()
+function EmailService:welcome()
 	print('sending ... ')
 
 	local response = {}
@@ -14,8 +15,8 @@ function EmailService:send()
 	local body = json.encode({
 		['From'] = 'contact@wildleague.org',
 		['To'] = 'contact@wildleague.org',
-		['Subject'] = 'Hello world!',
-		['TextBody'] = 'Hello World Email Test'
+		['Subject'] = 'Welcome to Wild League!',
+		['HtmlBody'] = get_email('welcome')
 	})
 
 	local headers = {

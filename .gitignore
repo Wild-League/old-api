@@ -9,3 +9,5 @@ uwsgi_temp/
 nginx.conf.compiled
 
 teste.lua
+
+.DS_Store

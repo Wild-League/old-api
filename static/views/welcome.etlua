@@ -9,7 +9,7 @@
           <table style="padding:30px" align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" width="100%">
             <tbody>
               <tr>
-                <td><img src="../../static/logo.png" width="80" height="80" /></td>
+                <td><img src="<%= logo %>" width="80" height="80" /></td>
 								<td><h1>Wild League</h1></td>
               </tr>
             </tbody>
@@ -36,8 +36,8 @@
             <table width="100%" align="center" role="presentation" cellSpacing="0" cellPadding="0" border="0">
               <tbody style="width:100%">
                 <tr style="width:100%">
-                  <td align="right" style="width:50%;padding-right:8px"><img src="../../static/x.svg" style="display:block;outline:none;border:none;text-decoration:none" /></td>
-                  <td align="left" style="width:50%;padding-left:8px"><img src="../../static/linkedin.svg" style="display:block;outline:none;border:none;text-decoration:none" /></td>
+                  <td align="right" style="width:50%;padding-right:8px"><img src="<%= twitter %>" style="display:block;outline:none;border:none;text-decoration:none" /></td>
+                  <td align="left" style="width:50%;padding-left:8px"><img src="<%= linkedin %>" style="display:block;outline:none;border:none;text-decoration:none" /></td>
                 </tr>
               </tbody>
             </table>
