@@ -1,11 +1,10 @@
 local https = require('ssl.https')
 local ltn12 = require('ltn12')
 local json = require('lib.json')
+local config = require('lapis.config').get()
 local get_email = require('src.handle_html')
 
-local EmailService = {
-	api_token = 'bf8d5397-c6ee-49e2-b4bf-9076d1cb3fd8'-- 'd0129e2f-5675-4b3a-997d-a7df0d802a61'
-}
+local EmailService = {}
 
 function EmailService:welcome()
 	local response = {}
@@ -18,7 +17,7 @@ function EmailService:welcome()
 	})
 
 	local headers = {
-		['X-Postmark-Server-Token'] = self.api_token,
+		['X-Postmark-Server-Token'] = config.postmark_token,
 		['Content-Type'] = 'application/json',
 		['Accept'] = 'application/json',
 		["Content-Length"] = string.len(body)
