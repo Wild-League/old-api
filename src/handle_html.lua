@@ -19,8 +19,8 @@ local function get_email(filename)
 
 	local template = widget({
 		logo = config.url..'/static/logo.png',
-		twitter = config.url..'/static/x.svg',
-		linkedin = config.url..'/static/linkedin.svg'
+		twitter = config.url..'/static/x.png',
+		linkedin = config.url..'/static/linkedin.png'
 	})
 	return template:render_to_string()
 end
