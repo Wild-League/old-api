@@ -9,8 +9,6 @@ local InstanceService = require('src.services.instance_service')
 local nodeinfo, mt = lapis.Application:extend('api')
 
 nodeinfo:post(prefix_route:add('api', '/nodeinfo/validate', json_params(function(self)
-	print(self.params.url)
-
 	local valid = InstanceService:validate(self.params.url)
 
 	return {

@@ -1,0 +1,6 @@
+app = "wild-minio"
+primary_region = "gru"
+
+[mounts]
+source = "miniodata"
+destination = "/data"

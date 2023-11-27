@@ -19,6 +19,12 @@ config("development", {
 		database = 'wild_league_dev'
 	},
 
+	minio = {
+		user = 'ropoko',
+		password = 'FWbkHQwWPvePOGT',
+		url = 'localhost:9001',
+	},
+
 	url = 'http://localhost:9090/',
 	domain = '@wildleague.org'
 })
@@ -40,6 +46,12 @@ config("staging", {
 		user = 'postgres',
 		password = 'FWbkHQwWPvePOGT',
 		database = 'wildleague'
+	},
+
+	minio = {
+		user = 'ropoko',
+		password = 'FWbkHQwWPvePOGT',
+		url = '[wild-minio.internal]:9001',
 	},
 
 	url = 'https://api.wildleague.org/',
@@ -64,6 +76,12 @@ config("production", {
 		user = 'postgres',
 		password = 'FWbkHQwWPvePOGT',
 		database = 'wildleague'
+	},
+
+	minio = {
+		user = 'ropoko',
+		password = 'FWbkHQwWPvePOGT',
+		url = '[wild-minio.internal]:9001',
 	},
 
 	url = 'https://api.wildleague.org/',
