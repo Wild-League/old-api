@@ -4,17 +4,15 @@ local json = require('lib.json')
 local get_email = require('src.handle_html')
 
 local EmailService = {
-	api_token = 'd0129e2f-5675-4b3a-997d-a7df0d802a61'
+	api_token = 'bf8d5397-c6ee-49e2-b4bf-9076d1cb3fd8'-- 'd0129e2f-5675-4b3a-997d-a7df0d802a61'
 }
 
 function EmailService:welcome()
-	print('sending ... ')
-
 	local response = {}
 
 	local body = json.encode({
 		['From'] = 'contact@wildleague.org',
-		['To'] = 'contact@wildleague.org',
+		['To'] = 'rodrigostramantinoli@gmail.com',
 		['Subject'] = 'Welcome to Wild League!',
 		['HtmlBody'] = get_email('welcome')
 	})
