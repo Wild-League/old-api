@@ -1,5 +1,6 @@
 local lapis = require('lapis')
 local prefix_route = require('src.prefix_routes')
+local json_params = require("lapis.application").json_params
 
 local UserService = require('src.services.user_service')
 
@@ -7,7 +8,7 @@ local auth, _ = lapis.Application:extend('api')
 
 -- TODO: implement OAuth
 
-auth:post(prefix_route:add('api', '/auth/login', function(self)
+auth:post(prefix_route:add('api', '/auth/signin', json_params(function(self)
 	local req = self.params
 
 	if not req.username or not req.password then
@@ -25,6 +26,6 @@ auth:post(prefix_route:add('api', '/auth/login', function(self)
 	else
 		return { status = 404, json = { message = 'User not found.' }}
 	end
-end))
+end)))
 
 return auth

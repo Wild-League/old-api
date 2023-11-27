@@ -7,8 +7,6 @@ local app = lapis.Application()
 app:enable("etlua")
 app.views_prefix = 'static.views'
 
-local EmailService = require('src.services.email_service')
-EmailService:welcome()
 
 app:include(api, { name='api' })
 app:include(well_known, { name='well_known' })

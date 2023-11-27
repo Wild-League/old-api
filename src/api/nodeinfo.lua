@@ -1,10 +1,23 @@
 local lapis = require('lapis')
+local json_params = require("lapis.application").json_params
 local prefix_route = require('src.prefix_routes')
 
 local UserService = require('src.services.user_service')
 local PostService = require('src.services.post_service')
+local InstanceService = require('src.services.instance_service')
 
 local nodeinfo, mt = lapis.Application:extend('api')
+
+nodeinfo:post(prefix_route:add('api', '/nodeinfo/validate', json_params(function(self)
+	print(self.params.url)
+
+	local valid = InstanceService:validate(self.params.url)
+
+	return {
+		status = valid and 200 or 400,
+		json = { valid = valid }
+	}
+end)))
 
 nodeinfo:get(prefix_route:add('api', '/nodeinfo', function()
 	return mt:json_response()

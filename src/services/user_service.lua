@@ -59,7 +59,8 @@ end
 function UserService:check_credentials(req)
 	local acct = self:get_by_username(req.username)
 
-	if acct.username == req.username and assert(bcrypt.verify(req.password, acct.password)) then
+	local password_are_equal, _ = pcall(function() return assert(bcrypt.verify(req.password, acct.password)) end)
+	if acct.username == req.username and password_are_equal then
 		local token = JWTService:encode(acct)
 		return { status = 200, json = { access_token = token }}
 	else
@@ -166,7 +167,6 @@ function UserService:is_user_type_valid(type)
 
 	local valid_types = {
 		'person',
-		'application',
 		'group' -- TODO: implement guilds | not implemented yet
 	}
 

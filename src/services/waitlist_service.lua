@@ -5,7 +5,7 @@ local Waitlist = Model:extend('waitlist')
 local WaitlistService = {}
 
 --[[
-	@email: string
+	@params email: string
 ]]
 function WaitlistService:create(email)
 	if not Waitlist:find({ email = email }) then
