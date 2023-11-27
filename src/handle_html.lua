@@ -22,6 +22,7 @@ local function get_email(filename)
 		twitter = config.url..'/static/x.png',
 		linkedin = config.url..'/static/linkedin.png'
 	})
+
 	return template:render_to_string()
 end
 

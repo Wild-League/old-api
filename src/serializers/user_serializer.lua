@@ -18,7 +18,7 @@ function UserSerializer:serializer(user)
 			preferredUsername = user.username,
 			name = user.username,
 			summary = user.bio,
-			url = 'https://wildleague.org/ropoko', -- user.short_url,
+			url = user.short_url,
 			manuallyApprovesFollowers = true, -- TODO: add this column
 			discoverable = true,
 			indexable = true, -- TODO: what is this for?

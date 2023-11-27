@@ -24,7 +24,7 @@ function mt:response_user(username)
 		json = {
 			subject = 'acct:'..username..config.domain,
 			aliases = {
-				[1] = 'https://wildleague.org/ropoko', -- user.short_url,
+				[1] = user.short_url,
 				[2] = user.long_url
 			},
 			links = {

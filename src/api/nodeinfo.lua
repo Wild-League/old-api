@@ -28,7 +28,7 @@ function mt:json_response()
 		json = {
 			metadata = {
 				name = 'wildleague.org',
-				nodeDescription = 'Gaming experience on fediverse'
+				nodeDescription = 'A community gaming experience'
 			},
 			version = '2.1',
 			software = {
