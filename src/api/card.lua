@@ -30,3 +30,5 @@ card:get(prefix_route:add('api', '/card/images', json_params(function()
 
 	return 'hello cards'
 end)))
+
+return card
