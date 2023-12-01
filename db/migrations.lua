@@ -61,7 +61,7 @@ return {
 		schema.create_table('card', {
 			{ 'id', types.serial, primary_key = true },
 			{ 'name', 'character varying(60) not null' },
-			{ 'deck_id', types.numeric },
+			{ 'deck_id', types.numeric({ null = true }) },
 			{ 'created_at', types.date },
 			{ 'updated_at', types.date({ null = true }) },
 		}, { if_not_exists = true })
