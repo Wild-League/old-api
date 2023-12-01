@@ -2,11 +2,11 @@
 <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
 <html lang="en">
   <head></head>
-  <body style="background-color:#efeef1;font-family:Open-Sans,sans-serif">
-    <table align="center" role="presentation" cellSpacing="0" cellPadding="0" border="0" width="100%" style="max-width:37.5em;width:580px;margin:30px auto;background-color:#ffffff">
+  <body style="font-family:Open-Sans,sans-serif">
+    <table align="center" role="presentation" cellSpacing="0" cellPadding="0" border="0" width="100%" style="width:580px;margin:30px auto;background-color:#ffffff">
       <tr style="width:100%">
         <td>
-          <table style="padding:30px" align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" width="100%">
+          <table align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" width="100%">
             <tbody>
               <tr>
                 <td><img src="<%= logo %>" width="80" height="80" /></td>
@@ -14,7 +14,7 @@
               </tr>
             </tbody>
           </table>
-          <table style="padding:0 50px 10px 60px" align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" width="100%">
+          <table align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" width="100%">
             <tbody>
               <tr>
                 <td>
