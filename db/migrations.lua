@@ -58,10 +58,27 @@ return {
 		}, { if_not_exists = true })
 	end,
 	[6] = function ()
+		-- TODO: add fields related to the assets on minio
 		schema.create_table('card', {
 			{ 'id', types.serial, primary_key = true },
 			{ 'name', 'character varying(60) not null' },
-			{ 'deck_id', types.numeric({ null = true }) },
+			{ 'type', 'character varying(60) not null' },
+			{ 'life', types.numeric({ null = true }) },
+			{ 'speed', types.numeric({ null = true }) },
+			{ 'width', types.numeric }, -- related to frame size
+			{ 'height', types.numeric }, -- related to frame size
+			{ 'attack_range', types.numeric({ null = true }) },
+			{ 'cooldown', types.numeric({ null = true }) },
+			{ 'damage', types.numeric({ null = true }) },
+			{ 'created_at', types.date },
+			{ 'updated_at', types.date({ null = true }) }
+		}, { if_not_exists = true })
+	end,
+	[7] = function ()
+		schema.create_table('deck_card', {
+			{ 'id', types.serial, primary_key = true },
+			{ 'deck_id', types.numeric },
+			{ 'card_id', types.numeric },
 			{ 'created_at', types.date },
 			{ 'updated_at', types.date({ null = true }) },
 		}, { if_not_exists = true })

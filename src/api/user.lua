@@ -79,12 +79,12 @@ user:get(prefix_route:add('api', '/user/current', json_params(function(self)
 	return {
 		status = 200,
 		json = {
-				id = acct.id,
-				username = acct.username,
-				display_name = acct.display_name,
-				level = acct.level,
-				created_at = acct.created_at,
-				bio = acct.bio
+			id = acct.id,
+			username = acct.username,
+			display_name = acct.display_name,
+			level = acct.level,
+			created_at = acct.created_at,
+			bio = acct.bio
 		}
 	}
 end)))

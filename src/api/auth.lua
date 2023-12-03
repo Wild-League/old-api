@@ -20,6 +20,8 @@ auth:post(prefix_route:add('api', '/auth/signin', json_params(function(self)
 	local user = UserService:exists(req.username)
 
 	if user then
+		self.session.current_user_name = req.username
+
 		-- TODO: should I return status codes from the service?
 		-- probably not
 		return UserService:check_credentials(req)

@@ -6,6 +6,7 @@ local nodeinfo = require('src.api.nodeinfo')
 local waitlist = require('src.api.waitlist')
 local webfinger = require('src.api.webfinger')
 local card = require('src.api.card')
+local deck = require('src.api.deck')
 
 local api, _ = lapis.Application:extend('app')
 
@@ -16,5 +17,6 @@ api:include(nodeinfo)
 api:include(waitlist)
 api:include(webfinger)
 api:include(card)
+api:include(deck)
 
 return api
