@@ -3,6 +3,7 @@ local json_params = require("lapis.application").json_params
 local prefix_route = require('src.prefix_routes')
 local UserService = require('src.services.user_service')
 local JWTService = require('src.services.jwt_service')
+local UserSerializer = require('src.serializers.user_serializer')
 
 local user, _ = lapis.Application:extend('api')
 
@@ -56,6 +57,42 @@ user:get(prefix_route:add('api', '/user/:id', function(self)
 			bio = acct.bio
 		}
 	}
+end))
+
+user:get(prefix_route:add('api', '/user/:username', function(self)
+	local acct = UserService:get_by_username(self.params.username)
+
+	if not acct then
+		return {
+			status = 404
+		}
+	end
+
+	return { status = 200, json = acct }
+end))
+
+user:get(prefix_route:add('api', '/user/:username/json', function(self)
+	local acct = UserService:get_by_username(self.params.username)
+
+	if not acct then
+		return {
+			status = 404
+		}
+	end
+
+	return { status = 200, json = UserSerializer:serializer(acct) }
+end))
+
+user:get(prefix_route:add('api', '/user/:id/json', function(self)
+	local acct = UserService:get_by_id(self.params.id)
+
+	if not acct then
+		return {
+			status = 404
+		}
+	end
+
+	return { status = 200, json = UserSerializer:serializer(acct) }
 end))
 
 user:get(prefix_route:add('api', '/user/current', json_params(function(self)

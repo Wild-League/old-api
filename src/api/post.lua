@@ -1,5 +1,6 @@
 local lapis = require('lapis')
 local prefix_route = require('src.prefix_routes')
+local json_params = require("lapis.application").json_params
 
 local PostService = require('src.services.post_service')
 
@@ -11,7 +12,7 @@ local post, _ = lapis.Application:extend('api')
 	required params:
 	- content: The text of the post
 ]]
-post:post(prefix_route:add('api', '/post', function(self)
+post:post(prefix_route:add('api', '/post', json_params(function(self)
 	local req = self.params
 
 	local p = PostService:create(req.content)
@@ -33,9 +34,9 @@ post:post(prefix_route:add('api', '/post', function(self)
 	else
 		return { status = 500, json = { message = 'sorry, an error occurred while creating your post, try again later.' } }
 	end
-end))
+end)))
 
-post:get(prefix_route:add('api', '/post/:id', function(self)
+post:get(prefix_route:add('api', '/post/:id', json_params(function(self)
 	local p = PostService:get_by_id(self.params.id)
 
 	if not p then
@@ -43,8 +44,6 @@ post:get(prefix_route:add('api', '/post/:id', function(self)
 			status = 404
 		}
 	end
-
-	print(p.in_reply_to_post_id)
 
 	return {
 		status = 200,
@@ -59,6 +58,6 @@ post:get(prefix_route:add('api', '/post/:id', function(self)
 			in_reply_to_user_id = p.in_reply_to_user_id
 		}
 	}
-end))
+end)))
 
 return post

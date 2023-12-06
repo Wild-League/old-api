@@ -36,7 +36,7 @@ function mt:response_user(username)
 				[2] = {
 					rel = 'self',
 					type = 'application/activity+json',
-					href = user.long_url
+					href = user.long_url .. '/json'
 				}
 			}
 		}

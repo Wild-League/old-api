@@ -88,7 +88,7 @@ local function create_url(type, username)
 			return config.url .. '@' .. username
 		end,
 		user_long = function()
-			return config.url .. 'users/' .. username
+			return config.url .. 'community/' .. username
 		end,
 		inbox = function()
 			return config.url .. '@' .. username .. '/inbox'
